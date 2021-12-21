@@ -3,15 +3,15 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/services.dart';
-import 'package:open_file/src/common/open_result.dart';
+import 'package:open_filex/src/common/open_result.dart';
 import 'macos.dart' as mac;
 import 'windows.dart' as windows;
 import 'linux.dart' as linux;
 
-class OpenFile {
+class OpenFilex {
   static const MethodChannel _channel = const MethodChannel('open_file');
 
-  OpenFile._();
+  OpenFilex._();
 
   ///linuxDesktopName like 'xdg'/'gnome'
   static Future<OpenResult> open(String? filePath,
