@@ -1,3 +1,5 @@
+## 3.3.1
+* Fix podspec in ios not resolved
 ## 3.3.0
 * Remove dangerous permission `REQUEST_INSTALL_PACKAGES` in Android
 ## 3.2.1
