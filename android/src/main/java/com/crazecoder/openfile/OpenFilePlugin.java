@@ -153,7 +153,8 @@ public class OpenFilePlugin implements MethodCallHandler
         try {
             String appDirCanonicalPath = new File(context.getApplicationInfo().dataDir).getCanonicalPath();
             String fileCanonicalPath = new File(filePath).getCanonicalPath();
-            return !fileCanonicalPath.startsWith(appDirCanonicalPath);
+            String extCanonicalPath = context.getExternalFilesDir(null).getCanonicalPath();
+            return !(fileCanonicalPath.startsWith(appDirCanonicalPath) || fileCanonicalPath.startsWith(extCanonicalPath));
         } catch (IOException e) {
             e.printStackTrace();
             return true;
