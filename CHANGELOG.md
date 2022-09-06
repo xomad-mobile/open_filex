@@ -1,3 +1,7 @@
+## 4.1.0
+* Fixed Plugin lifecycle onDetachedFromActivity in Android
+* Add getExternalFilesDir when checking if a path requires a permission
+
 ## 4.0.1
 * Update readme descriptions
 
