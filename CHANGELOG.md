@@ -1,3 +1,6 @@
+## 4.3.4
+* Add namespace property to make compatible with gradle 8.0 (Thanks to [kishormainali](https://github.com/kishormainali), PR [#9](https://github.com/javaherisaber/open_filex/pull/9))
+
 ## 4.3.3
 * Update README.md
 
