@@ -130,10 +130,14 @@ when Conflict with other plugins about FileProvider, add code below in your /and
 ```
 furthermore add code below in your `/android/app/src/main/res/xml/filepaths.xml`
 ```xml
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <external-path name="external_storage_directory" path="." />
-</resources>
+<paths>
+    <external-path name="external-path" path="."/>
+    <external-cache-path name="external-cache-path" path="."/>
+    <external-files-path name="external-files-path" path="."/>
+    <files-path name="files_path" path="."/>
+    <cache-path name="cache-path" path="."/>
+    <root-path name="root" path="."/>
+</paths>
 ```
 
 when Android dependency 'com.android.support:appcompat-v7' has different version for the compile error, add code below in your /android/build.gradle
