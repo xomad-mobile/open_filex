@@ -12,6 +12,7 @@ This package is a fork of [open_file](https://pub.dev/packages/open_file) to fix
 - Fix viewController is not recognized in iOS
 - Fix parse args not filtering commands properly
 - Replace JCenter with MavenCentral in Android build.gradle repositories (since JCenter becomes unreachable sometimes due to it's end of life)
+- Compatibility with Gradle 8+
 
 For full list of changes see [CHANGELOG](https://pub.dev/packages/open_filex/changelog)
 
