@@ -150,8 +150,8 @@ TopViewControllerForViewController(UIViewController *viewController) {
             @try {
                 BOOL previewSucceeded = [_documentController presentPreviewAnimated:YES];
                 if(!previewSucceeded){
-                    UIViewController rootViewController = RootViewController();
-                    UIViewController viewController =
+                    UIViewController *rootViewController = RootViewController();
+                    UIViewController *viewController =
                                 TopViewControllerForViewController(rootViewController);
                     [_documentController presentOpenInMenuFromRect:CGRectMake(500,20,100,100) inView:viewController.view animated:YES];
                 }
@@ -190,8 +190,8 @@ TopViewControllerForViewController(UIViewController *viewController) {
 }
 
 - (UIViewController *)documentInteractionControllerViewControllerForPreview:(UIDocumentInteractionController *)controller {
-    UIViewController rootViewController = RootViewController();
-    UIViewController viewController =
+    UIViewController *rootViewController = RootViewController();
+    UIViewController *viewController =
                         TopViewControllerForViewController(rootViewController);
     return  viewController;
 }
