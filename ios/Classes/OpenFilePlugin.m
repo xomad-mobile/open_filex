@@ -5,6 +5,38 @@
 
 static NSString *const CHANNEL_NAME = @"open_file";
 
+static UIViewController *RootViewController() {
+  if (@available(iOS 13, *)) {
+    NSSet *scenes = [[UIApplication sharedApplication] connectedScenes];
+    for (UIScene *scene in scenes) {
+      if ([scene isKindOfClass:[UIWindowScene class]]) {
+        NSArray *windows = ((UIWindowScene *)scene).windows;
+        for (UIWindow *window in windows) {
+          if (window.isKeyWindow) {
+            return window.rootViewController;
+          }
+        }
+      }
+    }
+    return nil;
+  } else {
+    return [UIApplication sharedApplication].keyWindow.rootViewController;
+  }
+}
+
+static UIViewController *
+TopViewControllerForViewController(UIViewController *viewController) {
+  if (viewController.presentedViewController) {
+    return TopViewControllerForViewController(
+        viewController.presentedViewController);
+  }
+  if ([viewController isKindOfClass:[UINavigationController class]]) {
+    return TopViewControllerForViewController(
+        ((UINavigationController *)viewController).visibleViewController);
+  }
+  return viewController;
+}
+
 @implementation OpenFilePlugin{
     FlutterResult _result;
     UIViewController *_viewController;
@@ -16,8 +48,9 @@ static NSString *const CHANNEL_NAME = @"open_file";
     FlutterMethodChannel* channel = [FlutterMethodChannel
                                      methodChannelWithName:CHANNEL_NAME
                                      binaryMessenger:[registrar messenger]];
+    UIViewController *rootViewController = RootViewController();
     UIViewController *viewController =
-    [UIApplication sharedApplication].delegate.window.rootViewController;
+              TopViewControllerForViewController(rootViewController);
     OpenFilePlugin* instance = [[OpenFilePlugin alloc] initWithViewController:viewController];
     [registrar addMethodCallDelegate:instance channel:channel];
 }
@@ -117,7 +150,10 @@ static NSString *const CHANNEL_NAME = @"open_file";
             @try {
                 BOOL previewSucceeded = [_documentController presentPreviewAnimated:YES];
                 if(!previewSucceeded){
-                    [_documentController presentOpenInMenuFromRect:CGRectMake(500,20,100,100) inView:[UIApplication sharedApplication].delegate.window.rootViewController.view animated:YES];
+                    UIViewController rootViewController = RootViewController();
+                    UIViewController viewController =
+                                TopViewControllerForViewController(rootViewController);
+                    [_documentController presentOpenInMenuFromRect:CGRectMake(500,20,100,100) inView:viewController.view animated:YES];
                 }
             }@catch (NSException *exception) {
                 NSDictionary * dict = @{@"message":@"File opened incorrectly。", @"type":@-4};
@@ -154,7 +190,10 @@ static NSString *const CHANNEL_NAME = @"open_file";
 }
 
 - (UIViewController *)documentInteractionControllerViewControllerForPreview:(UIDocumentInteractionController *)controller {
-    return  [UIApplication sharedApplication].delegate.window.rootViewController;
+    UIViewController rootViewController = RootViewController();
+    UIViewController viewController =
+                        TopViewControllerForViewController(rootViewController);
+    return  viewController;
 }
 
 - (BOOL) isBlankString:(NSString *)string {
