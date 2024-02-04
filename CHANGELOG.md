@@ -1,11 +1,14 @@
+## 4.4.0
+* Fix error when embedding Flutter app to a native iOS app (Add-to-app) (Thanks to [@nukeolay](https://github.com/nukeolay), PR [#10](https://github.com/javaherisaber/open_filex/pull/10))
+
 ## 4.3.4
-* Add namespace property to make compatible with gradle 8.0 (Thanks to [kishormainali](https://github.com/kishormainali), PR [#9](https://github.com/javaherisaber/open_filex/pull/9))
+* Add namespace property to make compatible with gradle 8.0 (Thanks to [@kishormainali](https://github.com/kishormainali), PR [#9](https://github.com/javaherisaber/open_filex/pull/9))
 
 ## 4.3.3
 * Update README.md
 
 ## 4.3.2
-* Move plugin initializations to onAttachedToEngine() in Android (Thanks to [DK070202](https://github.com/DK070202), mentioned at [#163](https://github.com/crazecoder/open_file/issues/163))
+* Move plugin initializations to onAttachedToEngine() in Android (Thanks to [@DK070202](https://github.com/DK070202), mentioned at [#163](https://github.com/crazecoder/open_file/issues/163))
 
 ## 4.3.1
 * Update README.md
