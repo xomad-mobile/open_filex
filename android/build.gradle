@@ -28,7 +28,7 @@ android {
         namespace "com.crazecoder.openfile"
     }
 
-    compileSdkVersion 33
+    compileSdkVersion 34
 
     defaultConfig {
         minSdkVersion 16
