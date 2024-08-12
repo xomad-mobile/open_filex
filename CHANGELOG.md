@@ -1,3 +1,10 @@
+## 4.5.0
+* Avoid using system to open on desktop platforms (Thanks to [@prateekmedia](https://github.com/prateekmedia), PR [#7](https://github.com/javaherisaber/open_filex/pull/7))
+* Use dartPluginClass as default_package for desktop platforms (Thanks to [@sjordan2010](https://github.com/sjordan2010), PR [#16](https://github.com/javaherisaber/open_filex/pull/16))
+* Update support for Android 14 (API 34) (Thanks to [@ShirishAryalKhalti](https://github.com/ShirishAryalKhalti), PR [#13](https://github.com/javaherisaber/open_filex/pull/13))
+* Fix MissingPluginException for opening adding as flutter module (Thanks to [@joker-fu](https://github.com/joker-fu), PR [#11](https://github.com/javaherisaber/open_filex/pull/11))
+* Allow open to run async on Desktop platforms (Thanks to [@lexxxel](https://github.com/lexxxel), PR [#15](https://github.com/javaherisaber/open_filex/pull/15))
+
 ## 4.4.0
 * Fix error when embedding Flutter app to a native iOS app (Add-to-app) (Thanks to [@nukeolay](https://github.com/nukeolay), PR [#10](https://github.com/javaherisaber/open_filex/pull/10))
 
