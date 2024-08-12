@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:open_filex/open_filex.dart';
@@ -17,7 +18,36 @@ class MyAppState extends State<MyApp> {
   var _openResult = 'Unknown';
 
   Future<void> openFile() async {
-    _openAndroidExternalImage();
+    if (Platform.isLinux) {
+      _openLinuxFile();
+    } else if (Platform.isAndroid) {
+      _openAndroidExternalImage();
+    } else if (Platform.isWindows) {
+      _openWindowsFile();
+    } else if (Platform.isMacOS) {
+      _openMacOsFile();
+    }
+  }
+
+  _openMacOsFile() async {
+    final result = await OpenFilex.open("/Downloads/flutter.png");
+    setState(() {
+      _openResult = "type=${result.type}  message=${result.message}";
+    });
+  }
+
+  _openWindowsFile() async {
+    final result = await OpenFilex.open("C:/Users/Lion/Downloads/flutter.png");
+    setState(() {
+      _openResult = "type=${result.type}  message=${result.message}";
+    });
+  }
+
+  _openLinuxFile() async {
+    final result = await OpenFilex.open("/home/mehdi/Downloads/flutter.jpg");
+    setState(() {
+      _openResult = "type=${result.type}  message=${result.message}";
+    });
   }
 
   // ignore: unused_element

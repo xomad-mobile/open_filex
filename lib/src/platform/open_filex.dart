@@ -4,9 +4,6 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:open_filex/src/common/open_result.dart';
-import 'macos.dart' as mac;
-import 'windows.dart' as windows;
-import 'linux.dart' as linux;
 
 /// OpenFilex class
 class OpenFilex {
@@ -15,31 +12,21 @@ class OpenFilex {
   OpenFilex._();
 
   ///linuxDesktopName like 'xdg'/'gnome'
-  static Future<OpenResult> open(String? filePath,
-      {String? type,
-      String? uti,
-      String linuxDesktopName = "xdg",
-      bool linuxByProcess = false}) async {
-    assert(filePath != null);
+  static Future<OpenResult> open(String filePath,
+      {String? type, String? uti, String linuxDesktopName = "xdg"}) async {
     if (!Platform.isIOS && !Platform.isAndroid) {
-      int result;
-      int windowsResult = 0;
+      int result = -1;
       if (Platform.isMacOS) {
-        result = mac.system(['open', '$filePath']);
-      } else if (Platform.isLinux) {
-        var filePathLinux = Uri.file(filePath!);
-        if (linuxByProcess) {
-          result =
-              Process.runSync('xdg-open', [filePathLinux.toString()]).exitCode;
-        } else {
-          result = linux
-              .system(['$linuxDesktopName-open', filePathLinux.toString()]);
-        }
+        final process = await Process.start('open', [filePath]);
+        result = await process.exitCode;
       } else if (Platform.isWindows) {
-        windowsResult = windows.shellExecute('open', filePath!);
-        result = windowsResult <= 32 ? 1 : 0;
+        final process = await Process.start('cmd', ['/c', 'start', '', filePath]);
+        result = await process.exitCode;
+      } else if (Platform.isLinux) {
+        final process = await Process.start("$linuxDesktopName-open", [filePath]);
+        result = await process.exitCode;
       } else {
-        result = -1;
+        throw UnsupportedError("Unsupported platform");
       }
       return OpenResult(
           type: result == 0 ? ResultType.done : ResultType.error,
@@ -47,11 +34,11 @@ class OpenFilex {
               ? "done"
               : result == -1
                   ? "This operating system is not currently supported"
-                  : "there are some errors when open $filePath${Platform.isWindows ? "   HINSTANCE=$windowsResult" : ""}");
+                  : "there are some errors when open $filePath");
     }
 
     Map<String, String?> map = {
-      "file_path": filePath!,
+      "file_path": filePath,
       "type": type,
       "uti": uti,
     };
