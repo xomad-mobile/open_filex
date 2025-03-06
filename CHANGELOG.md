@@ -1,3 +1,6 @@
+## 4.7.0
+* Fix Android compatibility issues after Flutter 3.29.0 upgrade (Thanks to [mufassalhussain](https://github.com/mufassalhussain), PR[#19](https://github.com/javaherisaber/open_filex/pull/19))
+
 ## 4.6.0
 * Fix platform errors for linux, windows, web, macos on Flutter 3.27+ (Thanks to [Xavier H.](https://github.com/xvrh), PR[#17](https://github.com/javaherisaber/open_filex/pull/17))
 
