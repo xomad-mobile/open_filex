@@ -1,5 +1,27 @@
+## 4.7.0
+* Fix Android compatibility issues after Flutter 3.29.0 upgrade (Thanks to [mufassalhussain](https://github.com/mufassalhussain), PR[#19](https://github.com/javaherisaber/open_filex/pull/19))
+
+## 4.6.0
+* Fix platform errors for linux, windows, web, macos on Flutter 3.27+ (Thanks to [Xavier H.](https://github.com/xvrh), PR[#17](https://github.com/javaherisaber/open_filex/pull/17))
+
+## 4.5.0
+* Avoid using system to open on desktop platforms (Thanks to [@prateekmedia](https://github.com/prateekmedia), PR [#7](https://github.com/javaherisaber/open_filex/pull/7))
+* Use dartPluginClass as default_package for desktop platforms (Thanks to [@sjordan2010](https://github.com/sjordan2010), PR [#16](https://github.com/javaherisaber/open_filex/pull/16))
+* Update support for Android 14 (API 34) (Thanks to [@ShirishAryalKhalti](https://github.com/ShirishAryalKhalti), PR [#13](https://github.com/javaherisaber/open_filex/pull/13))
+* Fix MissingPluginException for opening adding as flutter module (Thanks to [@joker-fu](https://github.com/joker-fu), PR [#11](https://github.com/javaherisaber/open_filex/pull/11))
+* Allow open to run async on Desktop platforms (Thanks to [@lexxxel](https://github.com/lexxxel), PR [#15](https://github.com/javaherisaber/open_filex/pull/15))
+
+## 4.4.0
+* Fix error when embedding Flutter app to a native iOS app (Add-to-app) (Thanks to [@nukeolay](https://github.com/nukeolay), PR [#10](https://github.com/javaherisaber/open_filex/pull/10))
+
+## 4.3.4
+* Add namespace property to make compatible with gradle 8.0 (Thanks to [@kishormainali](https://github.com/kishormainali), PR [#9](https://github.com/javaherisaber/open_filex/pull/9))
+
+## 4.3.3
+* Update README.md
+
 ## 4.3.2
-* Move plugin initializations to onAttachedToEngine() in Android (Thanks to [DK070202](https://github.com/DK070202), mentioned at [#163](https://github.com/crazecoder/open_file/issues/163))
+* Move plugin initializations to onAttachedToEngine() in Android (Thanks to [@DK070202](https://github.com/DK070202), mentioned at [#163](https://github.com/crazecoder/open_file/issues/163))
 
 ## 4.3.1
 * Update README.md
